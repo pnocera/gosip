@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/Azure/go-ntlmssp"
-	"github.com/koltyakov/gosip"
-	u "github.com/koltyakov/gosip/test/utils"
+	"github.com/pnocera/gosip"
+	u "github.com/pnocera/gosip/test/utils"
 )
 
 func CheckTransport(auth gosip.AuthCnfg, cnfgPath string) error {

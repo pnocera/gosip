@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/csom"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/csom"
 )
 
 // Taxonomy session struct

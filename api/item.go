@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent Item -conf -mods Select,Expand -helpers Normalized,ToMap

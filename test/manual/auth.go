@@ -6,14 +6,14 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/auth/addin"
-	"github.com/koltyakov/gosip/auth/adfs"
-	"github.com/koltyakov/gosip/auth/fba"
-	"github.com/koltyakov/gosip/auth/ntlm"
-	"github.com/koltyakov/gosip/auth/saml"
-	"github.com/koltyakov/gosip/auth/tmg"
-	u "github.com/koltyakov/gosip/test/utils"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/auth/addin"
+	"github.com/pnocera/gosip/auth/adfs"
+	"github.com/pnocera/gosip/auth/fba"
+	"github.com/pnocera/gosip/auth/ntlm"
+	"github.com/pnocera/gosip/auth/saml"
+	"github.com/pnocera/gosip/auth/tmg"
+	u "github.com/pnocera/gosip/test/utils"
 )
 
 // GetTestClient gets a client for a strategy

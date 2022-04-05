@@ -14,8 +14,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/cpass"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/cpass"
 )
 
 // AuthCnfg - FBA behind TMG auth config structure

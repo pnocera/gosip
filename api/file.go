@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent File -conf -mods Select,Expand -helpers Data,Normalized

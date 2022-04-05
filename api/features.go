@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 // Features represent SharePoint Webs & Site Features API queryable collection struct

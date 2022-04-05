@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent Files -item File -conf -coll -mods Select,Expand,Filter,Top,OrderBy -helpers Data,Normalized

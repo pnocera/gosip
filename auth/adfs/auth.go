@@ -14,8 +14,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/cpass"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/cpass"
 )
 
 // AuthCnfg - ADFS auth config structure

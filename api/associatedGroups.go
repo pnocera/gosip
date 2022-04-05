@@ -3,7 +3,7 @@ package api
 import (
 	"fmt"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent AssociatedGroups -conf -coll

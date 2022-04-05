@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/koltyakov/gosip/csom"
+	"github.com/pnocera/gosip/csom"
 )
 
 // Records represents SharePoint Item Records via REST+CSOM API object struct

@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/koltyakov/gosip"
-	u "github.com/koltyakov/gosip/test/utils"
+	"github.com/pnocera/gosip"
+	u "github.com/pnocera/gosip/test/utils"
 )
 
 // CheckAuth : common test case

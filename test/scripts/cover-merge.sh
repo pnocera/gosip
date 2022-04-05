@@ -16,8 +16,8 @@ done
 if [ -f auth_coverage.out ]; then
   cat auth_coverage.out \
     | egrep -v '^mode.*' \
-    | egrep -v '^github.com/koltyakov/gosip/auth/.*' \
-    | egrep -v '^github.com/koltyakov/gosip/api/.*' \
+    | egrep -v '^github.com/pnocera/gosip/auth/.*' \
+    | egrep -v '^github.com/pnocera/gosip/api/.*' \
     >> coverage.txt
   rm auth_coverage.out
 fi

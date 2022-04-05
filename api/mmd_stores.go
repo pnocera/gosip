@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/koltyakov/gosip/csom"
+	"github.com/pnocera/gosip/csom"
 )
 
 // TermStores term stores struct

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/api"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/api"
 )
 
 // CheckBasicPost : try creating an item

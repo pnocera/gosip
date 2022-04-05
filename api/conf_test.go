@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 func TestConf(t *testing.T) {

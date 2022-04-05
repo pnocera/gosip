@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent Groups -item Group -conf -coll -mods Select,Expand,Filter,Top,OrderBy -helpers Data,Normalized
