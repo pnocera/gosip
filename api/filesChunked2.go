@@ -6,9 +6,15 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"strconv"
 
 	"github.com/google/uuid"
 )
+
+type ChunkResponse struct {
+	OdataMetadata string `json:"odata.metadata"`
+	Value         string `json:"value"`
+}
 
 // AddChunked uploads a file in chunks (streaming), is a good fit for large files. Supported starting from SharePoint 2016.
 func (files *Files) AddChunked2(name string, stream io.Reader, options *AddChunkedOptions) (FileResp, error) {
@@ -132,17 +138,16 @@ func (file *File) startUpload2(uploadID string, chunk []byte) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	data = NormalizeODataItem(data)
-	// if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
-	// 	return res, nil
-	// }
-	res := &struct {
-		Value int `json:"value"`
-	}{}
+	//data = NormalizeODataItem(data)
+
+	res := &ChunkResponse{}
 	if err := json.Unmarshal(data, &res); err != nil {
 		return 0, err
 	}
-	return res.Value, nil
+	if resi, err := strconv.Atoi(fmt.Sprintf("%s", res.Value)); err == nil {
+		return resi, nil
+	}
+	return 0, err
 }
 
 // continueUpload continues uploading a document using chunk API
@@ -154,17 +159,14 @@ func (file *File) continueUpload2(uploadID string, fileOffset int, chunk []byte)
 		return 0, err
 	}
 	log.Printf(string(data) + "\n")
-	data = NormalizeODataItem(data)
-	// if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
-	// 	return res, nil
-	// }
-	res := &struct {
-		Value int `json:"value"`
-	}{}
+	res := &ChunkResponse{}
 	if err := json.Unmarshal(data, &res); err != nil {
 		return 0, err
 	}
-	return res.Value, nil
+	if resi, err := strconv.Atoi(fmt.Sprintf("%s", res.Value)); err == nil {
+		return resi, nil
+	}
+	return 0, err
 }
 
 // cancelUpload cancels document upload using chunk API
