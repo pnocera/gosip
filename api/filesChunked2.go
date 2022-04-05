@@ -129,6 +129,7 @@ func (file *File) startUpload2(uploadID string, chunk []byte) (int, error) {
 	client := NewHTTPClient(file.client)
 	endpoint := fmt.Sprintf("%s/StartUpload(uploadId=guid'%s')", file.endpoint, uploadID)
 	data, err := client.Post(endpoint, bytes.NewBuffer(chunk), file.config)
+	log.Printf(string(data) + "\n")
 	if err != nil {
 		return 0, err
 	}
@@ -153,6 +154,7 @@ func (file *File) continueUpload2(uploadID string, fileOffset int, chunk []byte)
 	if err != nil {
 		return 0, err
 	}
+	log.Printf(string(data) + "\n")
 	data = NormalizeODataItem(data)
 	if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
 		return res, nil
@@ -178,5 +180,6 @@ func (file *File) cancelUpload2(uploadID string) error {
 func (file *File) finishUpload2(uploadID string, fileOffset int, chunk []byte) (FileResp, error) {
 	client := NewHTTPClient(file.client)
 	endpoint := fmt.Sprintf("%s/FinishUpload(uploadId=guid'%s',fileOffset=%d)", file.endpoint, uploadID, fileOffset)
+	log.Printf(endpoint + "\n")
 	return client.Post(endpoint, bytes.NewBuffer(chunk), file.config)
 }
