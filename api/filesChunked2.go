@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"strconv"
 
 	"github.com/google/uuid"
 )
@@ -133,17 +132,17 @@ func (file *File) startUpload2(uploadID string, chunk []byte) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	data = NormalizeODataItem(data)
-	if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
-		return res, nil
-	}
+	// data = NormalizeODataItem(data)
+	// if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
+	// 	return res, nil
+	// }
 	res := &struct {
-		StartUpload int `json:"StartUpload,string"`
+		Value int `json:"value"`
 	}{}
 	if err := json.Unmarshal(data, &res); err != nil {
 		return 0, err
 	}
-	return res.StartUpload, nil
+	return res.Value, nil
 }
 
 // continueUpload continues uploading a document using chunk API
@@ -155,23 +154,24 @@ func (file *File) continueUpload2(uploadID string, fileOffset int, chunk []byte)
 		return 0, err
 	}
 	log.Printf(string(data) + "\n")
-	data = NormalizeODataItem(data)
-	if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
-		return res, nil
-	}
+	// data = NormalizeODataItem(data)
+	// if res, err := strconv.Atoi(fmt.Sprintf("%s", data)); err == nil {
+	// 	return res, nil
+	// }
 	res := &struct {
-		ContinueUpload int `json:"ContinueUpload,string"`
+		Value int `json:"value"`
 	}{}
 	if err := json.Unmarshal(data, &res); err != nil {
 		return 0, err
 	}
-	return res.ContinueUpload, nil
+	return res.Value, nil
 }
 
 // cancelUpload cancels document upload using chunk API
 func (file *File) cancelUpload2(uploadID string) error {
 	client := NewHTTPClient(file.client)
 	endpoint := fmt.Sprintf("%s/CancelUpload(uploadId=guid'%s')", file.endpoint, uploadID)
+	log.Printf(endpoint + "\n")
 	_, err := client.Post(endpoint, nil, file.config)
 	return err
 }
