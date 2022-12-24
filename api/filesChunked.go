@@ -1,7 +1,6 @@
 package api
 
 import (
-	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -68,24 +67,36 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 	}
 
 	slot := make([]byte, options.ChunkSize)
-	reader := bufio.NewReader(stream)
+	//reader := bufio.NewReader(stream)
 	for {
-		size, err := reader.Read(slot)
-		if err == io.EOF {
-			break
-		}
-		chunk := slot[:size]
 
-		log.Printf("read chunk size: %d", size)
+		numBytesRead := 0
+		for numBytesRead < options.ChunkSize {
+			n, err := stream.Read(slot[numBytesRead:])
+			if err != nil {
+				if err == io.EOF {
+					break
+				}
+			}
+			numBytesRead += n
+		}
+
+		// size, err := reader.Read(slot)
+		// if err == io.EOF {
+		// 	break
+		// }
+		chunk := slot[:numBytesRead]
+
+		log.Printf("read chunk size: %d", numBytesRead)
 
 		// Upload in a call if file size is less than chunk size
 		// pnocera: this is not working with io.Reader when it's not a file but a reader from an io.Pipe, so I commented it out
-		// if size < options.ChunkSize && progress.BlockNumber == 0 {
-		// 	return files.Add(name, chunk, options.Overwrite)
-		// }
+		if numBytesRead < options.ChunkSize && progress.BlockNumber == 0 {
+			return files.Add(name, chunk, options.Overwrite)
+		}
 
 		// Finishing uploading chunked file
-		if size < options.ChunkSize && progress.BlockNumber > 0 {
+		if numBytesRead < options.ChunkSize && progress.BlockNumber > 0 {
 			progress.Stage = "finishing"
 			log.Printf("finishing upload")
 			if !options.Progress(progress) {
