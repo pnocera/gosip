@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent Web -conf -mods Select,Expand -helpers Data,Normalized

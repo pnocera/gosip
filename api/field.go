@@ -3,7 +3,7 @@ package api
 import (
 	"bytes"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent Field -conf -mods Select,Expand -helpers Data,Normalized

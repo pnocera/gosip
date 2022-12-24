@@ -72,9 +72,10 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 		chunk := slot[:size]
 
 		// Upload in a call if file size is less than chunk size
-		if size < options.ChunkSize && progress.BlockNumber == 0 {
-			return files.Add(name, chunk, options.Overwrite)
-		}
+		// pnocera: this is not working with io.Reader when it's not a file but a reader from an io.Pipe, so I commented it out
+		// if size < options.ChunkSize && progress.BlockNumber == 0 {
+		// 	return files.Add(name, chunk, options.Overwrite)
+		// }
 
 		// Finishing uploading chunked file
 		if size < options.ChunkSize && progress.BlockNumber > 0 {

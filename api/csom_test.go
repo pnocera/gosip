@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/koltyakov/gosip/csom"
+	"github.com/pnocera/gosip/csom"
 )
 
 func TestCsomRequest(t *testing.T) {

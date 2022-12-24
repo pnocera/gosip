@@ -3,7 +3,7 @@ package helpers
 import (
 	"os"
 
-	u "github.com/koltyakov/gosip/test/utils"
+	u "github.com/pnocera/gosip/test/utils"
 )
 
 // ConfigExists : checks if the config file exists

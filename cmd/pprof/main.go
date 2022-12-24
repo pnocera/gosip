@@ -8,8 +8,8 @@ import (
 	_ "net/http/pprof"
 	"time"
 
-	"github.com/koltyakov/gosip/api"
-	m "github.com/koltyakov/gosip/test/manual"
+	"github.com/pnocera/gosip/api"
+	m "github.com/pnocera/gosip/test/manual"
 )
 
 func main() {

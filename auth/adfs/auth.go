@@ -2,8 +2,8 @@
 Package adfs implements ADFS Auth (user credentials authentication)
 
 Amongst supported platform versions are:
-	- SharePoint Online (SPO)
-	- On-Premise: 2019, 2016, and 2013
+  - SharePoint Online (SPO)
+  - On-Premise: 2019, 2016, and 2013
 */
 package adfs
 
@@ -14,8 +14,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/cpass"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/cpass"
 )
 
 // AuthCnfg - ADFS auth config structure

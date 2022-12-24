@@ -4,7 +4,7 @@ Package tmg implements FBA authentication behind TMG (Microsoft Forefront Threat
 Currently is legacy but was a popular way of exposing SharePoint into external world back in the days.
 
 Amongst supported platform versions are:
-	- On-Premise: 2019, 2016, and 2013
+  - On-Premise: 2019, 2016, and 2013
 */
 package tmg
 
@@ -14,8 +14,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/cpass"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/cpass"
 )
 
 // AuthCnfg - FBA behind TMG auth config structure

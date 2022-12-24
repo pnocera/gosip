@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/csom"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/csom"
 )
 
 //go:generate ggen -ent ContentTypes -item ContentType -conf -coll -mods Select,Expand,Filter,Top,OrderBy -helpers Data,Normalized

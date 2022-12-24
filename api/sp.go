@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/koltyakov/gosip"
 	"github.com/patrickmn/go-cache"
+	"github.com/pnocera/gosip"
 )
 
 var storage = cache.New(5*time.Minute, 10*time.Minute)

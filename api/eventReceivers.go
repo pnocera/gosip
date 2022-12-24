@@ -3,7 +3,7 @@ package api
 import (
 	"encoding/json"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 //go:generate ggen -ent EventReceivers -conf -coll -mods Select,Filter,Top,OrderBy

@@ -2,7 +2,7 @@
 Package fba implements FBA (Form-based authentication)
 
 Amongst supported platform versions are:
-	- On-Premise: 2019, 2016, and 2013
+  - On-Premise: 2019, 2016, and 2013
 */
 package fba
 
@@ -12,8 +12,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/cpass"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/cpass"
 )
 
 // AuthCnfg - FBA auth config structure

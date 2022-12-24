@@ -4,7 +4,7 @@ Package addin implements AddIn Only Auth
 This type of authentication uses AddIn Only policy and OAuth bearer tokens for authenticating HTTP requests.
 
 Amongst supported platform versions are:
-	- SharePoint Online (SPO)
+  - SharePoint Online (SPO)
 */
 package addin
 
@@ -14,8 +14,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/koltyakov/gosip"
-	"github.com/koltyakov/gosip/cpass"
+	"github.com/pnocera/gosip"
+	"github.com/pnocera/gosip/cpass"
 )
 
 // AuthCnfg - AddIn Only auth config structure

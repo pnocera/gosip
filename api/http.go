@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/koltyakov/gosip"
+	"github.com/pnocera/gosip"
 )
 
 // HTTPClient HTTP methods helper
