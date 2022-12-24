@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"strconv"
 
 	"github.com/google/uuid"
@@ -34,8 +35,10 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 
 	cancelUpload := func(file *File, uploadID string) error {
 		if err := file.cancelUpload(uploadID); err != nil {
+			log.Printf("error canceling upload: %v", err)
 			return err
 		}
+		log.Printf("upload was canceled")
 		return fmt.Errorf("file upload was canceled")
 	}
 
@@ -71,6 +74,8 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 		}
 		chunk := slot[:size]
 
+		log.Printf("read chunk size: %d", size)
+
 		// Upload in a call if file size is less than chunk size
 		// pnocera: this is not working with io.Reader when it's not a file but a reader from an io.Pipe, so I commented it out
 		// if size < options.ChunkSize && progress.BlockNumber == 0 {
@@ -80,6 +85,7 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 		// Finishing uploading chunked file
 		if size < options.ChunkSize && progress.BlockNumber > 0 {
 			progress.Stage = "finishing"
+			log.Printf("finishing upload")
 			if !options.Progress(progress) {
 				return nil, cancelUpload(file, uploadID)
 			}
@@ -92,6 +98,7 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 		// Initial chunked upload
 		if progress.BlockNumber == 0 {
 			progress.Stage = "starting"
+			log.Printf("starting upload")
 			if !options.Progress(progress) {
 				return nil, fmt.Errorf("file upload was canceled") // cancelUpload(file, uploadID)
 			}
@@ -107,6 +114,7 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 			progress.FileOffset = offset
 		} else { // or continue chunk upload
 			progress.Stage = "continue"
+			log.Printf("continue upload")
 			if !options.Progress(progress) {
 				return nil, cancelUpload(file, uploadID)
 			}
@@ -124,6 +132,7 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 	}
 
 	progress.Stage = "finishing"
+	log.Printf("finishing upload on main")
 	if !options.Progress(progress) {
 		return nil, cancelUpload(file, uploadID)
 	}
