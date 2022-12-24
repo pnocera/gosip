@@ -1,6 +1,7 @@
 package api
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -67,8 +68,9 @@ func (files *Files) AddChunked(name string, stream io.Reader, options *AddChunke
 	}
 
 	slot := make([]byte, options.ChunkSize)
+	reader := bufio.NewReader(stream)
 	for {
-		size, err := stream.Read(slot)
+		size, err := reader.Read(slot)
 		if err == io.EOF {
 			break
 		}
